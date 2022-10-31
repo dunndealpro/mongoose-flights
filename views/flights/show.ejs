@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <section>
+        <div>Flight: </div>
+        <div>
+            <%= flight.airline %>
+        </div>
+        <div>Airport: </div>
+        <div>
+            <%= flight.airport %>
+        </div>
+        <div>Flight No: </div>
+        <div>
+            <%= flight.flightNo %>
+        </div>
+        <div>Departure: </div>
+        <div>
+            <%= flight.departs %>
+        </div>
+
+    </section>
+
+    <br><br>
+    <h2>Destinations</h2>
+    <form id="add-destination-form" method="POST" action="/flights/<%= flight._id %>/details">
+
+        <label>Destinations:</label>
+        <select name="destinations">
+            <option value="AUS">AUS</option>
+            <option value="DFW">DFW</option>
+            <option value="DEN" selected>DEN</option>
+            <option value="LAX">LAX</option>
+            <option value="SAN">SAN</option>
+          </select>
+        <input type="datetime-local" name="departs" value="<%=arrivesDate%>">
+        <input type="submit" value="Add Flight Details">
+    </form>
+
+    <!-- New markup below -->
+
+
+    <% if (flight.destinations.length) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Destination</th>
+                    <th>Arrival Date/Time</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <% flight.destinations.forEach(function(f) { %>
+                    <tr>
+                        <!-- <td><%= r.createdAt.toLocaleDateString() %></td> -->
+                        <td>
+                            <%= f.airport %>
+                        </td>
+                        <td>
+                            <%= f.arrival %>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+        <% } else { %>
+            <h5>No Destinations Added Yet</h5>
+            <% } %>
+
+</body>
+
+</html>

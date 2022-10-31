@@ -16,10 +16,12 @@
     <table>
         <thead>
             <tr>
+                <!-- <th></th> -->
                 <th>Airline</th>
                 <th>Airport</th>
                 <th>Flight Number</th>
                 <th>Departure</th>
+                <th></th>
 
             </tr>
         </thead>
@@ -27,7 +29,28 @@
             <!-- Write the line of EJS to iterate over movies using forEach -->
             <% flights.forEach(function(f) { %>
                 <tr>
+                    <!-- <td>
+                        <form action="/flights/<%= f.id %>?_method=DELETE" class="delete-form" method="POST">
+                            <button type="submit">X</button>
+                        </form>
+                    </td> -->
+                    <td style="color:<%= f.textColor %>;">
+                        <%= f.airline %>
+                    </td>
+                    <td style="color:<%=f.textColor %>;">
+                        <%= f.airport %>
+                    </td>
+                    <td style="color:<%= f.textColor %>;">
+                        <%= f.flightNo %>
+                    </td>
+                    <td style="color:<%=f.textColor %>;">
+                        <%= f.departs %>
+                    </td>
                     <td>
+                        <td><a href="/flights/<%= f._id %>">DETAILS</a></td>
+                    </td>
+
+                    <!-- <td>
                         <%= f.airline %>
                     </td>
                     <td>
@@ -38,7 +61,7 @@
                     </td>
                     <td>
                         <%= f.departs %>
-                    </td>
+                    </td> -->
 
                 </tr>
                 <!-- Close the forEach using EJS here -->
