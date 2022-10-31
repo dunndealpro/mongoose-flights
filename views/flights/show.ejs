@@ -34,22 +34,21 @@
 
     <br><br>
     <h2>Destinations</h2>
-    <form id="add-destination-form" method="POST" action="/flights/<%= flight._id %>/details">
+    <form id="add-destination-form" method="POST" action="/flights/<%= flight._id %>/destinations">
 
         <label>Destinations:</label>
-        <select name="destinations">
+        <select name="airport">
             <option value="AUS">AUS</option>
             <option value="DFW">DFW</option>
             <option value="DEN" selected>DEN</option>
             <option value="LAX">LAX</option>
             <option value="SAN">SAN</option>
           </select>
-        <input type="datetime-local" name="departs" value="<%=arrivesDate%>">
+        <input type="datetime-local" name="arrival" value="<%=arrivesDate%>">
         <input type="submit" value="Add Flight Details">
     </form>
 
     <!-- New markup below -->
-
 
     <% if (flight.destinations.length) { %>
         <table>
@@ -61,14 +60,14 @@
                 </tr>
             </thead>
             <tbody>
-                <% flight.destinations.forEach(function(f) { %>
+                <% flight.destinations.forEach(function(d) { %>
                     <tr>
-                        <!-- <td><%= r.createdAt.toLocaleDateString() %></td> -->
+
                         <td>
-                            <%= f.airport %>
+                            <%= d.airport %>
                         </td>
                         <td>
-                            <%= f.arrival %>
+                            <%= d.arrival %>
                         </td>
                     </tr>
                     <% }); %>
@@ -79,5 +78,6 @@
             <% } %>
 
 </body>
+
 
 </html>
