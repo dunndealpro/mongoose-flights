@@ -10,12 +10,21 @@
 
 </head>
 
+
+
 <body>
 
-    <h2>Enter a New Flight</h2>
+    <!-- <h2>Enter a New Flight</h2>
     <a href="/flights/new">Add Flight</a>
-    <a href="/flights/index">View All Flights</a>
-    <form action="/flights" method="POST">
+    <a href="/flights/index">View All Flights</a> -->
+    <nav>
+        <img src="/images/airpline-icon.png">
+        <a href="/flights/new" <%- title==='Add Flight' ? 'class="active"' : '' %>>ADD FLIGHT</a>
+        <a href="/flights/index" <%- title==='All Flights' ? 'class="active"' : '' %>>ALL FLIGHT</a>
+    </nav>
+
+
+    <form id="new-form" action="/flights" method="POST">
         <label>Airline:
     <select name="airline">
         <option value="American">American</option>

@@ -7,7 +7,7 @@ router.get('/new', flightsCtrl.new)
 /* GET users listing. */
 router.post('/', flightsCtrl.create)
 
-router.get('/index', flightsCtrl.index)
+router.get('/', flightsCtrl.index)
 
 router.delete('/:id', flightsCtrl.delete)
 

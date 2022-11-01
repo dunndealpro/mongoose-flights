@@ -118,7 +118,7 @@ table td {
     font-weight: bold;
 }
 
-#add-review-form {
+#add-destination-form {
     display: grid;
     grid-template-columns: auto auto;
     grid-gap: 1rem;

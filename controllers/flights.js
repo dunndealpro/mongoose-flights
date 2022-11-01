@@ -37,7 +37,7 @@ function newFlight(req, res) {
     let departsDate = `${dt.getFullYear()+1}-${(dt.getMonth() + 1).toString().padStart(2, '0')}`;
     departsDate += `-${dt.getDate().toString().padStart(2, '0')}T${dt.toTimeString().slice(0, 5)}`;
     console.log('depart date: ', departsDate)
-    res.render('flights/new', { departsDate });
+    res.render('flights/new', { title: 'Add Flight', departsDate });
     // res.render('flights/new');
 
 }
@@ -49,7 +49,7 @@ function create(req, res) {
     flight.save(function(err) {
         if (err) return res.redirect('/flights/new');
         console.log(flight);
-        res.redirect('/flights/new');
+        res.redirect('/flights');
     })
 }
 
@@ -59,7 +59,7 @@ function index(req, res) {
     Flight.find({}, function(err, flights) {
         if (err) return res.redirect('/');
         // res.render('flights/index');
-        res.render('flights/index', { flights });
+        res.render('flights/index', { title: 'All Flights', flights });
         // console.log(flights)
     }).sort({ "departs": 1 });
     findOldFlights()

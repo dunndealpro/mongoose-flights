@@ -10,10 +10,16 @@
 </head>
 
 <body>
-    <h1>Flight List</h1>
+
+    <nav>
+        <img src="/images/airpline-icon.png">
+        <a href="/flights/new" <%- title==='Add Flight' ? 'class="active"' : '' %>>ADD FLIGHT</a>
+        <a href="/flights" <%- title==='All Flights' ? 'class="active"' : '' %>>ALL FLIGHT</a>
+    </nav>
+    <!-- <h1>Flight List</h1>
     <a href="/flights/new">Add Flight</a>
-    <a href="/flights/index">View All Flights</a>
-    <table>
+    <a href="/flights/index">View All Flights</a> -->
+    <table id="list">
         <thead>
             <tr>
                 <!-- <th></th> -->
