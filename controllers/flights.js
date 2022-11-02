@@ -66,14 +66,33 @@ function index(req, res) {
 }
 
 function findOldFlights(req, res) {
+    todayDate = new Date
     Flight.find({
-        departs: {
-            $lt: todayDate
-        }
-    }, function(err, flights) {
-        flights.textColor = 'red'
-    })
+            departs: {
+                $lt: todayDate
+            }
+        },
+        function(err, flights) {
+            if (err) return res.redirect('/');
+            flights.forEach(function(f) {
+                Flight.updateOne({ _id: f._id }, { $set: { textColor: 'red', } })
+                console.log(f._id)
+                console.log(f.textColor)
+            })
+            console.log(flights);
+        })
 }
+
+// function findOldFlights(req, res) {
+//     todayDate = new Date()
+//     Flight.find({
+//             departs: {
+//                 $lt: todayDate
+//             }
+//         },
+//         console.log(flights)
+//     }
+// }
 
 
 // function findOldFlights(req, res) {

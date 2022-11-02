@@ -10,7 +10,10 @@ const destinationSchema = new Schema({
 
     arrival: {
         type: Date
-    }
+    },
+}, {
+    timestamps: true
+
 })
 
 const flightSchema = new Schema({
@@ -34,22 +37,23 @@ const flightSchema = new Schema({
         departs: {
             type: Date,
             default: function() {
-                return new Date
+                return new Date()
             },
         },
 
         textColor: {
             type: String,
             default: 'black'
-
         },
 
-        destinations: [destinationSchema]
-    },
+        destinations: [destinationSchema],
 
-    {
+        tickets: [{ type: Schema.Types.ObjectId, ref: 'Ticket' }]
+    }, {
         timestamps: true
-    });
+    }
+
+)
 
 //Compile the schema into a model and export it
 module.exports = mongoose.model('Flight', flightSchema)

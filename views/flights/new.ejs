@@ -17,40 +17,45 @@
     <!-- <h2>Enter a New Flight</h2>
     <a href="/flights/new">Add Flight</a>
     <a href="/flights/index">View All Flights</a> -->
+
     <nav>
         <img src="/images/airpline-icon.png">
         <a href="/flights/new" <%- title==='Add Flight' ? 'class="active"' : '' %>>ADD FLIGHT</a>
-        <a href="/flights/index" <%- title==='All Flights' ? 'class="active"' : '' %>>ALL FLIGHT</a>
+        <a href="/flights" <%- title==='All Flights' ? 'class="active"' : '' %>>ALL FLIGHTS</a>
+        <a href="/tickets/new" <%- title==='Add Tickets' ? 'class="active"' : '' %>>ADD TICKET</a>
     </nav>
+    <main>
+        <h1>
+            <%= title %>
+        </h1>
 
 
-    <form id="new-form" action="/flights" method="POST">
-        <label>Airline:
-    <select name="airline">
+        <form id="new-form" action="/flights" method="POST">
+            <label>Airline:</label>
+            <select name="airline">
         <option value="American">American</option>
         <option value="Southwest">Southwest</option>
-        <option value="United">United</option>        
-      </select>
-  </label><br>
+        <option value="United">United</option>
+        </select>
 
-        <label>Airport: 
-    <select name="airport">
-      <option value="AUS">AUS</option>
-      <option value="DFW">DFW</option>
-      <option value="DEN" selected>DEN</option>
-      <option value="LAX">LAX</option>
-      <option value="SAN">SAN</option>
-    </select>
-  </label><br>
-        <label>Flight Number:
-    <input type="number" name="flightNo">
-  </label><br>
-        <label>Departs:
-     <input type="datetime-local" name="departs" value = "<%=departsDate%>" >
-    <!-- <input type="datetime-local" name="departs" value="2023-10-30T19:30" > -->
-  </label><br>
-        <input type="submit" value="Add Flight">
-    </form>
+
+            <label>Airport: </label>
+            <select name="airport">
+            <option value="AUS">AUS</option>
+            <option value="DFW">DFW</option>
+            <option value="DEN" selected>DEN</option>
+            <option value="LAX">LAX</option>
+            <option value="SAN">SAN</option>
+        </select>
+            <label>Flight Number:</label>
+            <input type="number" name="flightNo">
+            <label>Departs:</label>
+            <input type="datetime-local" name="departs" value="<%=departsDate%>">
+            <!-- <input type="hidden" id="timezone" name="timezone" value="-08:00" /> -->
+
+
+            <input type="submit" value="Add Flight">
+        </form>
 
 
 </body>

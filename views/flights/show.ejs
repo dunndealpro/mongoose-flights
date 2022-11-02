@@ -16,73 +16,82 @@
     <nav>
         <img src="/images/airpline-icon.png">
         <a href="/flights/new" <%- title==='Add Flight' ? 'class="active"' : '' %>>ADD FLIGHT</a>
-        <a href="/flights" <%- title==='All Flights' ? 'class="active"' : '' %>>ALL FLIGHT</a>
+        <a href="/flights" <%- title==='All Flights' ? 'class="active"' : '' %>>ALL FLIGHTS</a>
+        <a href="/tickets/new" <%- title==='Add Tickets' ? 'class="active"' : '' %>>ADD TICKET</a>
     </nav>
 
-    <section id="show-page">
-        <div>Flight: </div>
-        <div>
-            <%= flight.airline %>
-        </div>
-        <div>Airport: </div>
-        <div>
-            <%= flight.airport %>
-        </div>
-        <div>Flight No: </div>
-        <div>
-            <%= flight.flightNo %>
-        </div>
-        <div>Departure: </div>
-        <div>
-            <%= flight.departs %>
-        </div>
+    <main>
+        <h1>
+            <%= title %>
+        </h1>
 
-    </section>
+        <section id="show-page">
+            <div>Flight: </div>
+            <div>
+                <%= flight.airline %>
+            </div>
+            <div>Airport: </div>
+            <div>
+                <%= flight.airport %>
+            </div>
+            <div>Flight No: </div>
+            <div>
+                <%= flight.flightNo %>
+            </div>
+            <div>Departure: </div>
+            <div>
+                <%= flight.departs %>
 
-    <br><br>
-    <h2>Destinations</h2>
-    <form id="add-destination-form" method="POST" action="/flights/<%= flight._id %>/destinations">
+                    <!-- <%= flight.departs.getFullYear()+'-'+(flight.departs.getMonth()+1)+'-'+flight.departs.getDate() %> -->
+            </div>
 
-        <label>Destinations:</label>
-        <select name="airport">
+        </section>
+
+        <br><br>
+        <h2>Destinations</h2>
+        <form id="add-destination-form" method="POST" action="/flights/<%= flight._id %>/destinations">
+
+            <label>Destinations:</label>
+            <select name="airport">
             <option value="AUS">AUS</option>
             <option value="DFW">DFW</option>
             <option value="DEN" selected>DEN</option>
             <option value="LAX">LAX</option>
             <option value="SAN">SAN</option>
           </select>
-        <input type="datetime-local" name="arrival" value="<%=arrivesDate%>">
-        <input type="submit" value="Add Flight Details">
-    </form>
+            <input type="datetime-local" name="arrival" value="<%=arrivesDate%>">
 
-    <!-- New markup below -->
+            <input type="submit" value="Add Flight Details">
+        </form>
 
-    <% if (flight.destinations.length) { %>
-        <table>
-            <thead>
-                <tr>
-                    <th>Destination</th>
-                    <th>Arrival Date/Time</th>
+        <!-- New markup below -->
 
-                </tr>
-            </thead>
-            <tbody>
-                <% flight.destinations.forEach(function(d) { %>
+        <% if (flight.destinations.length) { %>
+            <table>
+                <thead>
                     <tr>
+                        <th>Destination</th>
+                        <th>Arrival Date/Time</th>
 
-                        <td>
-                            <%= d.airport %>
-                        </td>
-                        <td>
-                            <%= d.arrival %>
-                        </td>
                     </tr>
-                    <% }); %>
-            </tbody>
-        </table>
-        <% } else { %>
-            <h5>No Destinations Added Yet</h5>
-            <% } %>
+                </thead>
+                <tbody>
+                    <% flight.destinations.forEach(function(d) { %>
+                        <tr>
+
+                            <td>
+                                <%= d.airport %>
+                            </td>
+                            <td>
+                                <%= d.arrival %>
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+            <% } else { %>
+                <h5>No Destinations Added Yet</h5>
+                <% } %>
 
 </body>
 

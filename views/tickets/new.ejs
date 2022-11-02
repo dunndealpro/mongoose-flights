@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+</head>
+
+<body>
+    <nav>
+        <img src="/images/airpline-icon.png">
+        <a href="/flights/new" <%- title==='Add Flight' ? 'class="active"' : '' %>>ADD FLIGHT</a>
+        <a href="/flights" <%- title==='All Flights' ? 'class="active"' : '' %>>ALL FLIGHTS</a>
+        <a href="/tickets/new" <%- title==='Add Tickets' ? 'class="active"' : '' %>>ADD TICKET</a>
+    </nav>
+    <main>
+        <h1>
+            <%= title %>
+        </h1>
+
+
+
+        <form id="add-per-to-flight" action="/tickets" method="POST">
+            <label>Select Flight</label>
+            <select name="flight">
+              <%- flights.map(f => `<option value="${f._id}">${f.airline} Flight # ${f.flightNo}</option>`).join('') %>
+            </select>
+            <label>Enter Seat(ex B4)</label>
+            <input name="seat" required pattern="[A-F][1-9]\d?">
+            <label>Enter Price($)</label>
+            <input type="number" name="price">
+            <button type="submit">Add Ticket</button>
+
+        </form>
+
+
+
+    </main>
+</body>
+
+</html>

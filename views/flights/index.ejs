@@ -14,49 +14,56 @@
     <nav>
         <img src="/images/airpline-icon.png">
         <a href="/flights/new" <%- title==='Add Flight' ? 'class="active"' : '' %>>ADD FLIGHT</a>
-        <a href="/flights" <%- title==='All Flights' ? 'class="active"' : '' %>>ALL FLIGHT</a>
+        <a href="/flights" <%- title==='All Flights' ? 'class="active"' : '' %>>ALL FLIGHTS</a>
+        <a href="/tickets/new" <%- title==='Add Tickets' ? 'class="active"' : '' %>>ADD TICKET</a>
     </nav>
-    <!-- <h1>Flight List</h1>
+
+    <main>
+        <h1>
+            <%= title %>
+        </h1>
+        <!-- <h1>Flight List</h1>
     <a href="/flights/new">Add Flight</a>
     <a href="/flights/index">View All Flights</a> -->
-    <table id="list">
-        <thead>
-            <tr>
-                <!-- <th></th> -->
-                <th>Airline</th>
-                <th>Airport</th>
-                <th>Flight Number</th>
-                <th>Departure</th>
-                <th></th>
-
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Write the line of EJS to iterate over movies using forEach -->
-            <% flights.forEach(function(f) { %>
+        <table id="list">
+            <thead>
                 <tr>
-                    <!-- <td>
+                    <!-- <th></th> -->
+                    <th>Airline</th>
+                    <th>Airport</th>
+                    <th>Flight Number</th>
+                    <th>Departure</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Write the line of EJS to iterate over movies using forEach -->
+                <% flights.forEach(function(f) { %>
+                    <tr>
+                        <!-- <td>
                         <form action="/flights/<%= f.id %>?_method=DELETE" class="delete-form" method="POST">
                             <button type="submit">X</button>
                         </form>
                     </td> -->
-                    <td style="color:<%= f.textColor %>;">
-                        <%= f.airline %>
-                    </td>
-                    <td style="color:<%=f.textColor %>;">
-                        <%= f.airport %>
-                    </td>
-                    <td style="color:<%= f.textColor %>;">
-                        <%= f.flightNo %>
-                    </td>
-                    <td style="color:<%=f.textColor %>;">
-                        <%= f.departs %>
-                    </td>
-                    <td>
-                        <td><a href="/flights/<%= f._id %>">DETAILS</a></td>
-                    </td>
+                        <td style="color:<%= f.textColor %>;">
+                            <%= f.airline %>
+                        </td>
+                        <td style="color:<%=f.textColor %>;">
+                            <%= f.airport %>
+                        </td>
+                        <td style="color:<%= f.textColor %>;">
+                            <%= f.flightNo %>
+                        </td>
+                        <td style="color:<%=f.textColor %>;">
+                            <!-- <%= f.departs.getFullYear()+'-'+(f.departs.getMonth()+1)+'-'+f.departs.getDate() %> -->
+                            <%= f.departs %>
+                        </td>
+                        <td>
+                            <td><a href="/flights/<%= f._id %>">DETAILS</a></td>
+                        </td>
 
-                    <!-- <td>
+                        <!-- <td>
                         <%= f.airline %>
                     </td>
                     <td>
@@ -69,11 +76,12 @@
                         <%= f.departs %>
                     </td> -->
 
-                </tr>
-                <!-- Close the forEach using EJS here -->
-                <% }); %>
-        </tbody>
-    </table>
+                    </tr>
+                    <!-- Close the forEach using EJS here -->
+                    <% }); %>
+            </tbody>
+        </table>
+    </main>
 </body>
 
 </html>
