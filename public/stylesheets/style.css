@@ -129,3 +129,13 @@ table td {
     width: 8rem;
     grid-column: 2 / 3;
 }
+
+ul {
+    margin: 0 0 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    font-weight: bold;
+}

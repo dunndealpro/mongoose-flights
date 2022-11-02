@@ -1,4 +1,5 @@
 const Flight = require('../models/flight');
+const Ticket = require('../models/ticket');
 
 module.exports = {
     new: newFlight,
@@ -11,13 +12,15 @@ module.exports = {
 
 function show(req, res) {
     Flight.findById(req.params.id, function(err, flight) {
-        const newFlight = new Flight();
-        // Obtain the default date
-        const dt = newFlight.departs;
+        Ticket.find({ flight: flight._id }, function(err, tickets) {
+            const newFlight = new Flight();
+            // Obtain the default date
+            const dt = newFlight.departs;
 
-        let arrivesDate = `${dt.getFullYear()+1}-${(dt.getMonth() + 1).toString().padStart(2, '0')}`;
-        arrivesDate += `-${dt.getDate().toString().padStart(2, '0')}T${dt.toTimeString().slice(0, 5)}`;
-        res.render('flights/show', { title: 'Flight Detail', flight, arrivesDate });
+            let arrivesDate = `${dt.getFullYear()+1}-${(dt.getMonth() + 1).toString().padStart(2, '0')}`;
+            arrivesDate += `-${dt.getDate().toString().padStart(2, '0')}T${dt.toTimeString().slice(0, 5)}`;
+            res.render('flights/show', { title: 'Flight Detail', flight, arrivesDate, tickets });
+        })
     });
 }
 
@@ -48,7 +51,7 @@ function create(req, res) {
 
     flight.save(function(err) {
         if (err) return res.redirect('/flights/new');
-        console.log(flight);
+        console.log('Created:  ', flight);
         res.redirect('/flights');
     })
 }

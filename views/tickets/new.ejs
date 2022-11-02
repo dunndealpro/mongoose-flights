@@ -24,7 +24,7 @@
 
 
 
-        <form id="add-per-to-flight" action="/tickets" method="POST">
+        <form id="new-form" action="/tickets" method="POST">
             <label>Select Flight</label>
             <select name="flight">
               <%- flights.map(f => `<option value="${f._id}">${f.airline} Flight # ${f.flightNo}</option>`).join('') %>

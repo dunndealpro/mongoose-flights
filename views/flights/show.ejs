@@ -47,51 +47,78 @@
 
         </section>
 
-        <br><br>
-        <h2>Destinations</h2>
-        <form id="add-destination-form" method="POST" action="/flights/<%= flight._id %>/destinations">
-
-            <label>Destinations:</label>
-            <select name="airport">
-            <option value="AUS">AUS</option>
-            <option value="DFW">DFW</option>
-            <option value="DEN" selected>DEN</option>
-            <option value="LAX">LAX</option>
-            <option value="SAN">SAN</option>
-          </select>
-            <input type="datetime-local" name="arrival" value="<%=arrivesDate%>">
-
-            <input type="submit" value="Add Flight Details">
-        </form>
-
-        <!-- New markup below -->
-
-        <% if (flight.destinations.length) { %>
+        <% if (flight.tickets.length) { %>
             <table>
                 <thead>
                     <tr>
-                        <th>Destination</th>
-                        <th>Arrival Date/Time</th>
+                        <th>Seat</th>
+                        <th>Price</th>
 
                     </tr>
                 </thead>
                 <tbody>
-                    <% flight.destinations.forEach(function(d) { %>
+                    <% flight.tickets.forEach(function(t) { %>
                         <tr>
 
                             <td>
-                                <%= d.airport %>
+                                <%= t.seat %>
                             </td>
                             <td>
-                                <%= d.arrival %>
+                                <%= t.price %>
                             </td>
                         </tr>
                         <% }); %>
                 </tbody>
             </table>
             <% } else { %>
-                <h5>No Destinations Added Yet</h5>
+                <h5>No Tickets Added Yet</h5>
                 <% } %>
+
+                    <br><br>
+                    <h2>Destinations</h2>
+                    <form id="add-destination-form" method="POST" action="/flights/<%= flight._id %>/destinations">
+
+                        <label>Destinations:</label>
+                        <select name="airport">
+            <option value="AUS">AUS</option>
+            <option value="DFW">DFW</option>
+            <option value="DEN" selected>DEN</option>
+            <option value="LAX">LAX</option>
+            <option value="SAN">SAN</option>
+          </select>
+                        <input type="datetime-local" name="arrival" value="<%=arrivesDate%>">
+
+                        <input type="submit" value="Add Flight Details">
+                    </form>
+
+                    <!-- New markup below -->
+
+                    <% if (flight.destinations.length) { %>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Destination</th>
+                                    <th>Arrival Date/Time</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% flight.destinations.forEach(function(d) { %>
+                                    <tr>
+
+                                        <td>
+                                            <%= d.airport %>
+                                        </td>
+                                        <td>
+                                            <%= d.arrival %>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+                            </tbody>
+                        </table>
+                        <% } else { %>
+                            <h5>No Destinations Added Yet</h5>
+                            <% } %>
 
 </body>
 
