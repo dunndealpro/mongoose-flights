@@ -75,7 +75,17 @@
                 <% } %>
                     <br><br>
 
-                    <a href="/tickets/newFromFlight"> New Tickets</a>
+
+                    <form id="add-ticket" action="/flights/<%= flight._id%>/tickets/" method="POST">
+
+                        <button type="submit">Add to Flight</button>
+
+
+                    </form>
+
+
+
+                    <!-- <a href="/flights/<%= flight._id %> /tickets"> New Tickets</a> -->
                     <!-- <a href="/tickets/newFromFlight" <%- title==='Add Tickets' ? 'class="active"' : '' %>>New Ticket</a> -->
                     <br><br>
                     <h2>Destinations</h2>

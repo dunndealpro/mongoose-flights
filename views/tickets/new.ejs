@@ -28,6 +28,7 @@
             <label>Select Flight</label>
             <select name="flight">
               <%- flights.map(f => `<option value="${f._id}">${f.airline} Flight # ${f.flightNo}</option>`) %>
+              <!-- <%-  `<option value="${flights._id}">${flights.airline} Flight # ${flights.flightNo}</option>` %> -->
             </select>
             <label>Enter Seat([A-F][1-9])</label>
             <input name="seat" required pattern="[A-F][1-9]\d?">

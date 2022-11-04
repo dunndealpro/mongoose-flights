@@ -13,7 +13,7 @@ module.exports = {
 function show(req, res) {
     Flight.findById(req.params.id, function(err, flight) {
         console.log('Flight id:  ', flight._id) //check to see Flight.findById is working
-        Ticket.find({}, function(err, tickets) {
+        Ticket.find({ flight: flight._id }, function(err, tickets) {
             console.log('Ticket.find check: ', tickets) // check to see if Ticket.find is working
 
             const dt = flight.departs;

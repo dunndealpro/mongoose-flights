@@ -48,8 +48,9 @@ function newTicket(req, res) {
 function addTicket(req, res) {
     console.log('am i going ticketo')
     console.log(req.body)
-    Flight.findById(req.body, function(err, flights) {
+    Flight.findById(req.params.id, function(err, flights) {
         console.log(flights)
+
         res.render('tickets/newFromFlight', {
             title: "Add Ticket",
             flights
