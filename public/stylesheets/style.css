@@ -14,7 +14,7 @@ body {
 
 body>nav {
     grid-area: nav;
-    background-color: #B8C0C2;
+    background-color: rgb(101, 163, 192);
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -32,7 +32,7 @@ body>main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #E8ECEB;
+    background-color: rgb(205, 226, 253);
     padding: 20px;
     overflow-y: scroll;
 }
@@ -65,16 +65,43 @@ nav>a.active {
 }
 
 #new-form *,
-#add-review-form * {
+#add-destination-form * {
     font-size: 20px;
     padding: 5px;
     border-radius: 5px;
+}
+
+#add-destination-form input[type="submit"] {
+    /* grid-column: span 2; */
+    width: 10rem;
+    margin-left: auto;
 }
 
 #new-form input[type="submit"] {
     grid-column: span 2;
     width: 10rem;
     margin-left: auto;
+}
+
+option {
+    background-color: lightgrey;
+}
+
+#new-form input[type="submit"]:hover {
+    color: white;
+    background-color: rgb(101, 163, 192)
+}
+
+#add-ticket-button {
+    font-size: 20px;
+    grid-column: span 2;
+    width: 10rem;
+    margin-left: auto;
+}
+
+#add-ticket-button:hover {
+    color: white;
+    background-color: rgb(101, 163, 192)
 }
 
 table {
@@ -87,8 +114,10 @@ table thead th {
 }
 
 table td {
-    padding: 10px;
+    padding: 5px;
     text-align: center;
+    border: 1px solid black;
+    background-color: lightgrey;
 }
 
 #list td:nth-child(2),
@@ -105,7 +134,7 @@ table td {
 }
 
 #list a:hover {
-    background-color: white;
+    background-color: rgb(101, 163, 192);
 }
 
 #show-page {
@@ -119,15 +148,17 @@ table td {
 }
 
 #add-destination-form {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 1rem;
     margin-bottom: 2rem;
 }
 
-#add-review-form input[type="submit"] {
-    width: 8rem;
+#add-destination-form input[type="submit"] {
+    width: 12rem;
     grid-column: 2 / 3;
+}
+
+#add-destination-form input[type="submit"]:hover {
+    background-color: rgb(101, 163, 192);
+    color: white;
 }
 
 ul {
@@ -139,3 +170,8 @@ ul {
 li {
     font-weight: bold;
 }
+
+
+/* #add-ticket-from-flight {
+    grid-template-columns: span 2;
+} */

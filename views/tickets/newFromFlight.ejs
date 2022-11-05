@@ -1,49 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-
-</head>
-
-<body>
-    <nav>
-        <img src="/images/airpline-icon.png">
-        <a href="/flights/new" <%- title==='Add Flight' ? 'class="active"' : '' %>>ADD FLIGHT</a>
-        <a href="/flights" <%- title==='All Flights' ? 'class="active"' : '' %>>ALL FLIGHTS</a>
-        <a href="/tickets/new" <%- title==='Add Tickets' ? 'class="active"' : '' %>>ADD TICKET</a>
-    </nav>
-    <main>
-        <h1>
-            <%= title %>
-        </h1>
+<%- include('../partials/header') %>
 
 
-
-        <form id="new-form" action="/tickets" method="POST">
-            <label>Select Flight</label>
-            <select name="flight">
-              
-              <!-- <option value="<%= flights._id %> "selected><%=  flights._id %> </option> -->
-              <!-- <option value="<%= flights._id %> "selected><%=  flights._id %> </option> -->
-
+    <form id="new-form" action="/tickets" method="POST">
+        <label>Select Flight</label>
+        <select name="flight">
               <%-  `<option value="${flights._id}">${flights.airline} Flight # ${flights.flightNo}</option>` %>
-
             </select>
-            <label>Enter Seat([A-F][1-9])</label>
-            <input name="seat" required pattern="[A-F][1-9]\d?">
-            <label>Enter Price($)</label>
-            <input type="number" name="price">
-            <button type="submit">Add Ticket!!!</button>
+        <label>Enter Seat([A-F][1-9])</label>
+        <input name="seat" required pattern="[A-F][1-9]\d?">
+        <label>Enter Price($)</label>
+        <input type="number" name="price">
+        <button id="add-ticket-button" submit ">Add Ticket</button>
+    </form>
 
-        </form>
-
-    </main>
-
-</body>
-
-</html>
+    <%- include('../partials/footer') %>
